@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace PO2Sovellus
+namespace PO2Sovellus.Services
 {
     public interface ITervehtija
     {
