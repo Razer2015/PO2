@@ -1,5 +1,4 @@
-﻿@using PO2Sovellus.Models
-@model ICollection<Henkilo>
+﻿@model PO2Sovellus.ViewModels.EtusivuViewModel
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -8,11 +7,11 @@
     <title>Maistuuko?</title>
 </head>
 <body>
-    <h1>Henkilömäärä @Model.Count</h1>
+    <h1>@Model.Otsikko</h1>
     <table>
-        <tr><th>Id</th><th>Etunimi</th><th>Sukunimi</th></tr>
-        @foreach (var henkilo in Model) {
-            <tr><td>@henkilo.Id</td><td>@henkilo.Etunimi</td><td>@henkilo.Sukunimi</td></tr>
+        <tr><th>Id</th><th>Nimi</th></tr>
+        @foreach (var ravintola in Model.Ravintolat) {
+            <tr><td>@ravintola.Id</td><td>@ravintola.Nimi</td><td>@Html.ActionLink("Näytä", "Tiedot", new { id = ravintola.Id})</td></tr>
         }
     </table>
 </body>
