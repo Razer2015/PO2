@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PO2Sovellus", "PO2Sovellus\PO2Sovellus.csproj", "{779D813C-873E-4CAE-8EF6-3B9505450469}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PO2Sovellus", "PO2Sovellus\PO2Sovellus.csproj", "{779D813C-873E-4CAE-8EF6-3B9505450469}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sovellus.Model", "Sovellus.Model\Sovellus.Model.csproj", "{C27C4676-EEFB-40E9-8B36-5AE996661AA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sovellus.Data", "Sovellus.Data\Sovellus.Data.csproj", "{202F08E8-5670-4C1C-BB50-8FC573ADEB76}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{779D813C-873E-4CAE-8EF6-3B9505450469}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{779D813C-873E-4CAE-8EF6-3B9505450469}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{779D813C-873E-4CAE-8EF6-3B9505450469}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C27C4676-EEFB-40E9-8B36-5AE996661AA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C27C4676-EEFB-40E9-8B36-5AE996661AA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C27C4676-EEFB-40E9-8B36-5AE996661AA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C27C4676-EEFB-40E9-8B36-5AE996661AA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{202F08E8-5670-4C1C-BB50-8FC573ADEB76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{202F08E8-5670-4C1C-BB50-8FC573ADEB76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{202F08E8-5670-4C1C-BB50-8FC573ADEB76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{202F08E8-5670-4C1C-BB50-8FC573ADEB76}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
