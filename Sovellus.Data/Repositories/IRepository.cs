@@ -15,6 +15,6 @@ namespace Sovellus.Data.Repositories
     }
 
     public interface IRavintolaRepository : IRepository<Ravintola, int> { }
-    public interface IArviointiRepository : IRepository<Arviointi, int> { }
-    public interface IUutinenRepository : IRepository<Uutinen, int> { }
+    public interface IArviointiRepository : IRepository<Arviointi, long> { }
+    public interface IUutinenRepository : IRepository<Uutinen, long> { }
 }

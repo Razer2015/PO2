@@ -1,17 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PO2Sovellus.Entities;
+using Sovellus.Model.Entities;
 using PO2Sovellus.Services;
 using PO2Sovellus.ViewModels;
 using System.Linq;
+using Sovellus.Data.Repositories;
 
 namespace PO2Sovellus.Controllers
 {
     public class EtusivuController : Controller
     {
         ITervehtija _tervehtija;
-        private IData<Ravintola> _ravintolaData;
+        private IRavintolaRepository _ravintolaData;
 
-        public EtusivuController(ITervehtija tervehtija, IData<Ravintola> ravintolaData) {
+        public EtusivuController(ITervehtija tervehtija, IRavintolaRepository ravintolaData) {
             _tervehtija = tervehtija;
             _ravintolaData = ravintolaData;
         }
