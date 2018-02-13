@@ -1,5 +1,9 @@
 ﻿@model Sovellus.Model.Entities.Ravintola
 
+@{
+    ViewBag.Title = "Uusi";
+}
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -8,9 +12,9 @@
 </head>
 <body>
     <div>
-        <h1>Uusi</h1>
+        <h1>@ViewBag.Title</h1>
         <div>
-            @using (Html.BeginForm()){
+            @using (Html.BeginForm()) {
                 <div>
                     @Html.LabelFor(m => m.Nimi)
                     @Html.TextBoxFor(m => m.Nimi)

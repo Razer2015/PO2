@@ -1,5 +1,9 @@
 ﻿@model PO2Sovellus.ViewModels.EtusivuViewModel
 
+@{
+    ViewBag.Title = "Maistuuko?";
+}
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -7,12 +11,17 @@
     <title>Maistuuko?</title>
 </head>
 <body>
-    <h1>@Model.Otsikko</h1>
-    <table>
-        <tr><th>Id</th><th>Nimi</th></tr>
-        @foreach (var ravintola in Model.Ravintolat) {
-            <tr><td>@ravintola.Id</td><td>@ravintola.Nimi</td><td>@Html.ActionLink("Näytä", "Tiedot", new { id = ravintola.Id})</td></tr>
-        }
-    </table>
+    <h1>@ViewBag.Title</h1>
+    @foreach (var ravintola in Model.Ravintolat) {
+        @Html.Partial("_Yhteenveto", ravintola)
+    }
+
+    <div>
+        <a asp-controller="Etusivu" asp-action="Uusi">Uusi ravintola</a>
+    </div>
+
+    @section footer {
+        <div>Copyright &copy; Miika Forma, @DateTime.Now.Year</div>
+    }
 </body>
 </html>

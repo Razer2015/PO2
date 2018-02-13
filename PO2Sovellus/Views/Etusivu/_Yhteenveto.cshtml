@@ -1,0 +1,23 @@
+﻿@model Ravintola
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <section>
+        <h3>@Model.Nimi</h3>
+        <div>
+            @Model.Kaupunki.Nimi <br />
+            @Model.Katuosoite <br />
+        </div>
+        <div>
+            <a asp-action="Tiedot" asp-route-id="@Model.Id">Näytä</a>
+            <a asp-action="Muuta" asp-route-id="@Model.Id">Muokkaa</a>
+        </div>
+    </section>
+</body>
+</html>

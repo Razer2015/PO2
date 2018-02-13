@@ -19,7 +19,7 @@ namespace PO2Sovellus.Controllers
 
         public IActionResult Index() {
             var data = new EtusivuViewModel {
-                Ravintolat = _ravintolaData.HaeKaikki(),
+                Ravintolat = _ravintolaData.HaeKaikki(true),
                 Otsikko = _tervehtija.GetTervehdys()
             };
 
@@ -27,8 +27,13 @@ namespace PO2Sovellus.Controllers
         }
 
         public IActionResult Tiedot(int id) {
-            var ravintolat = _ravintolaData.HaeKaikki();
-            return View(ravintolat.FirstOrDefault(x => x.Id.Equals(id)));
+            var ravintola = _ravintolaData.Hae(id, true);
+
+            if (ravintola == null) {
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(ravintola);
         }
 
         [HttpGet]
@@ -52,6 +57,51 @@ namespace PO2Sovellus.Controllers
             //return View("Tiedot", uusi);
 
             return RedirectToAction("Tiedot", new { id = uusi.Id });
+        }
+
+        [HttpGet]
+        public IActionResult Muuta(int id) {
+            var ravintola = _ravintolaData.Hae(id);
+            if (ravintola == null) {
+                return RedirectToAction(nameof(Index));
+            }
+
+            var nakyma = new RavintolaEditViewModel {
+                Id = ravintola.Id,
+                Katuosoite = ravintola.Katuosoite,
+                KaupunkiId = ravintola.KaupunkiId,
+                KotisivuUrl = ravintola.KotisivuUrl,
+                KuvaUrl = ravintola.KuvaUrl,
+                Nimi = ravintola.Nimi,
+                Postinro = ravintola.Postinro,
+                TyyppiId = ravintola.TyyppiId,
+                RavintolaTyypit = _ravintolaData.HaeRavintolaTyypit(),
+                Kaupungit = _ravintolaData.HaeKaupungit()
+            };
+
+            return View(nakyma);
+        }
+
+        [HttpPost]
+        public IActionResult Muuta(int id, RavintolaEditViewModel muutettu) {
+            var ravintola = _ravintolaData.Hae(id);
+            if (!ModelState.IsValid) {
+                muutettu.RavintolaTyypit = _ravintolaData.HaeRavintolaTyypit();
+                muutettu.Kaupungit = _ravintolaData.HaeKaupungit();
+                return View(muutettu);
+            }
+
+            ravintola.Nimi = muutettu.Nimi;
+            ravintola.KaupunkiId = muutettu.KaupunkiId;
+            ravintola.TyyppiId = muutettu.TyyppiId;
+            ravintola.Katuosoite = muutettu.Katuosoite;
+            ravintola.Postinro = muutettu.Postinro;
+            ravintola.KotisivuUrl = muutettu.KotisivuUrl;
+            ravintola.KuvaUrl = muutettu.KuvaUrl;
+
+            _ravintolaData.Muuta(ravintola);
+
+            return RedirectToAction("Tiedot", new { id = muutettu.Id });
         }
     }
 }
