@@ -4,49 +4,40 @@
         ViewBag.Title = $"Muuta {Model.Nimi}";
 }
 
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title>Maistuuko?</title>
-</head>
-<body>
+<div>
+    <h1>@ViewBag.Title</h1>
     <div>
-        <h1>@ViewBag.Title</h1>
-        <div>
-            <form method="post" asp-antiforgery="true">
-                <div>
-                    <input type="hidden" asp-for="Id" />
-                    <label asp-for="Nimi"></label>
-                    <input asp-for="Nimi" />
-                    <span asp-validation-for="Nimi"></span>
-                    <br />
-                    <label asp-for="KaupunkiId"></label>
-                    <select asp-for="KaupunkiId" asp-items="@(new SelectList(Model.Kaupungit, "Id", "Nimi"))"></select>
-                    <br />
-                    <label asp-for="TyyppiId"></label>
-                    <select asp-for="TyyppiId" asp-items="@(new SelectList(Model.RavintolaTyypit, "Id", "Nimi"))"></select>
-                    <br />
-                    <label asp-for="Katuosoite"></label>
-                    <input asp-for="Katuosoite" />
-                    <span asp-validation-for="Katuosoite"></span>
-                    <br />
-                    <label asp-for="Postinro"></label>
-                    <input asp-for="Postinro" />
-                    <span asp-validation-for="Postinro"></span>
-                    <br />
-                    <label asp-for="KuvaUrl"></label>
-                    <input asp-for="KuvaUrl" />
-                    <span asp-validation-for="KuvaUrl"></span>
-                    <br />
-                    <label asp-for="KotisivuUrl"></label>
-                    <input asp-for="KotisivuUrl" />
-                    <span asp-validation-for="KotisivuUrl"></span>
-                    <br />
-                    <input type="submit" value="Muuta" />
-                </div>
-            </form>
-        </div>
+        <form method="post" asp-antiforgery="true">
+            <div>
+                <input type="hidden" asp-for="Id" />
+                <label asp-for="Nimi"></label>
+                <input asp-for="Nimi" />
+                <span asp-validation-for="Nimi"></span>
+                <br />
+                <label asp-for="KaupunkiId"></label>
+                <select asp-for="KaupunkiId" asp-items="@(new SelectList(Model.Kaupungit, "Id", "Nimi"))"></select>
+                <br />
+                <label asp-for="TyyppiId"></label>
+                <select asp-for="TyyppiId" asp-items="@(new SelectList(Model.RavintolaTyypit, "Id", "Nimi"))"></select>
+                <br />
+                <label asp-for="Katuosoite"></label>
+                <input asp-for="Katuosoite" />
+                <span asp-validation-for="Katuosoite"></span>
+                <br />
+                <label asp-for="Postinro"></label>
+                <input asp-for="Postinro" />
+                <span asp-validation-for="Postinro"></span>
+                <br />
+                <label asp-for="KuvaUrl"></label>
+                <input asp-for="KuvaUrl" />
+                <span asp-validation-for="KuvaUrl"></span>
+                <br />
+                <label asp-for="KotisivuUrl"></label>
+                <input asp-for="KotisivuUrl" />
+                <span asp-validation-for="KotisivuUrl"></span>
+                <br />
+                <input type="submit" value="Muuta" />
+            </div>
+        </form>
     </div>
-</body>
-</html>
+</div>

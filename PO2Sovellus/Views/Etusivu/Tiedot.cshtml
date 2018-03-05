@@ -4,30 +4,21 @@
     ViewBag.Title = "Tiedot " + Model.Nimi;
 }
 
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title>Maistuuko?</title>
-</head>
-<body>
-    @if (Model == null) {
-        <h3>Ravintolaa ei löydy annetulla id-arvolla.</h3>
-    }
-    else {
-        <h3>@Model.Nimi</h3>
+@if (Model == null) {
+    <h3>Ravintolaa ei löydy annetulla id-arvolla.</h3>
+}
+else {
+    <h3>@Model.Nimi</h3>
 
-        <div>
-            Id: @Model.Id <br />
-            Kaupunki: @Model.Kaupunki.Nimi <br />
-            Tyyppi: @Model.RavintolaTyyppi.Nimi <br />
-            Katuosoite: @Model.Katuosoite <br />
-            Postinumero: @Model.Postinro <br />
-            Kotisivu: @Model.KotisivuUrl <br />
-            Kuva: @Model.KuvaUrl <br />
-        </div>
-        <br />
-        @Html.ActionLink("Takaisin etusivulle", "Index")
-    }
-</body>
-</html>
+    <div>
+        Id: @Model.Id <br />
+        Kaupunki: @Model.Kaupunki.Nimi <br />
+        Tyyppi: @Model.RavintolaTyyppi.Nimi <br />
+        Katuosoite: @Model.Katuosoite <br />
+        Postinumero: @Model.Postinro <br />
+        Kotisivu: @Model.KotisivuUrl <br />
+        Kuva: @Model.KuvaUrl <br />
+    </div>
+    <br />
+    @Html.ActionLink("Takaisin etusivulle", "Index")
+}

@@ -4,24 +4,15 @@
     ViewBag.Title = "Maistuuko?";
 }
 
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title>Maistuuko?</title>
-</head>
-<body>
-    <h1>@ViewBag.Title</h1>
-    @foreach (var ravintola in Model.Ravintolat) {
-        @Html.Partial("_Yhteenveto", ravintola)
-    }
+<h1>@ViewBag.Title</h1>
+@foreach (var ravintola in Model.Ravintolat) {
+    @Html.Partial("_Yhteenveto", ravintola)
+}
 
-    <div>
-        <a asp-controller="Etusivu" asp-action="Uusi">Uusi ravintola</a>
-    </div>
+<div>
+    <a asp-controller="Etusivu" asp-action="Uusi">Uusi ravintola</a>
+</div>
 
-    @section footer {
-        <div>Copyright &copy; Miika Forma, @DateTime.Now.Year</div>
-    }
-</body>
-</html>
+@section footer {
+    <div>Copyright &copy; Miika Forma, @DateTime.Now.Year</div>
+}
