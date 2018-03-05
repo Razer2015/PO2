@@ -10,6 +10,7 @@ using PO2Sovellus.Entities;
 using Sovellus.Data;
 using Sovellus.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace PO2Sovellus
 {
@@ -22,15 +23,14 @@ namespace PO2Sovellus
             routeBuilder.MapRoute(
                 "Oletus",
                 "{controller=Etusivu}/{action=Index}/{id?}" // URL pattern
-                //new { controller = "Etusivu", action = "Index" },
-                //new { id = "7" }
+                                                            //new { controller = "Etusivu", action = "Index" },
+                                                            //new { id = "7" }
             );
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
-        public void ConfigureServices(IServiceCollection services)
-        {
+        public void ConfigureServices(IServiceCollection services) {
             services.AddMvc();
             services.AddSingleton(Configuration);
             services.AddSingleton<ITervehtija, Tervehtija>();
@@ -42,19 +42,25 @@ namespace PO2Sovellus
                 yhteys = yhteys.Replace("%CONTENTROOTPATH%", _contentRootPath);
             }
             services.AddDbContext<SovellusContext>(options => options.UseSqlServer(yhteys));
+            services.AddIdentity<User, IdentityRole>(config =>
+            {
+                config.Cookies.ApplicationCookie.LoginPath = "/Tili/Sisaan";
+                config.Cookies.ApplicationCookie.LogoutPath = "/Tili/Ulos";
+            })
+                .AddEntityFrameworkStores<SovellusIdentityDbContext>();
+
+            services.AddDbContext<SovellusIdentityDbContext>(options => options.UseSqlServer(yhteys));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, ITervehtija tervehtija)
-        {
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, ITervehtija tervehtija) {
             loggerFactory.AddConsole();
 
             //app.UseDefaultFiles(); // Käyttää index.html tiedostoa defaulttina
             //app.UseStaticFiles(); // Käyttää wwwroot kansion tiedostoja
             app.UseFileServer(); // Korvaa edelliset
 
-            if (env.IsDevelopment())
-            {
+            if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
             }
             else {
@@ -63,6 +69,8 @@ namespace PO2Sovellus
                     //ExceptionHandler = context => context.Response.WriteAsync("Hupsista!")
                 });
             }
+
+            app.UseIdentity();
 
             app.UseMvc(ConfigureRoutes);
 

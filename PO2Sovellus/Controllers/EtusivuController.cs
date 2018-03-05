@@ -4,19 +4,23 @@ using PO2Sovellus.Services;
 using PO2Sovellus.ViewModels;
 using System.Linq;
 using Sovellus.Data.Repositories;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PO2Sovellus.Controllers
 {
+    [Authorize]
     public class EtusivuController : Controller
     {
         ITervehtija _tervehtija;
         private IRavintolaRepository _ravintolaData;
+
 
         public EtusivuController(ITervehtija tervehtija, IRavintolaRepository ravintolaData) {
             _tervehtija = tervehtija;
             _ravintolaData = ravintolaData;
         }
 
+        [AllowAnonymous]
         public IActionResult Index() {
             var data = new EtusivuViewModel {
                 Ravintolat = _ravintolaData.HaeKaikki(true),
