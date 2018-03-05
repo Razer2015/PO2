@@ -1,0 +1,28 @@
+﻿@model SisaanViewModel
+
+@{ 
+    ViewBag.Title = "Kirjaudu sisään";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<form method="post" asp-antiforgery="true">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div>
+        <label asp-for="Username"></label>
+        <input asp-for="Username" />
+        <span asp-validation-for="Username"></span>
+        <br />
+        <label asp-for="Password"></label>
+        <input asp-for="Password" />
+        <span asp-validation-for="Password"></span>
+        <br />
+        <label asp-for="RememberMe"></label>
+        <input asp-for="RememberMe" />
+        <span asp-validation-for="RememberMe"></span>
+        <br />
+    </div>
+    <div>
+        <input type="submit" value="Kirjaudu" />
+    </div>
+</form>

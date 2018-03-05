@@ -11,6 +11,7 @@ using Sovellus.Data;
 using Sovellus.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using System;
 
 namespace PO2Sovellus
 {
@@ -46,7 +47,16 @@ namespace PO2Sovellus
             {
                 config.Cookies.ApplicationCookie.LoginPath = "/Tili/Sisaan";
                 config.Cookies.ApplicationCookie.LogoutPath = "/Tili/Ulos";
+                config.Password.RequiredLength = 3;
+                config.Password.RequireLowercase = false;
+                config.Password.RequireUppercase = false;
+                config.Password.RequireNonAlphanumeric = false;
+                config.Password.RequireDigit = false;
+                config.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+                config.Lockout.MaxFailedAccessAttempts = 10;
+                config.User.RequireUniqueEmail = false;
             })
+                .AddErrorDescriber<CustomIdentityErrorDescriber>()
                 .AddEntityFrameworkStores<SovellusIdentityDbContext>();
 
             services.AddDbContext<SovellusIdentityDbContext>(options => options.UseSqlServer(yhteys));

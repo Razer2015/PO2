@@ -17,7 +17,7 @@ namespace Sovellus.Data
         public DbSet<RavintolaTyyppi> RavintolaTyypit { get; set; }
         public DbSet<Uutinen> Uutiset { get; set; }
 
-        public SovellusContext(DbContextOptions options) : base(options) { }
+        public SovellusContext(DbContextOptions<SovellusContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             foreach (var relationship in modelBuilder.Model.GetEntityTypes()
