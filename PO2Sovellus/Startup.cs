@@ -38,6 +38,8 @@ namespace PO2Sovellus
             //services.AddScoped<IData<Ravintola>, InMemoryRavintolaData>();
             services.AddScoped<IRavintolaRepository, RavintolaRepository>();
 
+            services.AddLogging();
+
             var yhteys = Configuration.GetConnectionString("SovellusDb");
             if (yhteys.Contains("%CONTENTROOTPATH%")) {
                 yhteys = yhteys.Replace("%CONTENTROOTPATH%", _contentRootPath);
@@ -73,12 +75,14 @@ namespace PO2Sovellus
 
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
+                loggerFactory.AddDebug(LogLevel.Information);
             }
             else {
                 app.UseExceptionHandler(new ExceptionHandlerOptions {
                     ExceptionHandlingPath = "/virhe"
                     //ExceptionHandler = context => context.Response.WriteAsync("Hupsista!")
                 });
+                loggerFactory.AddDebug(LogLevel.Error);
             }
 
             app.UseIdentity();
@@ -110,6 +114,8 @@ namespace PO2Sovellus
             Configuration = builder.Build();
 
             _contentRootPath = env.ContentRootPath;
+
+            App_Start.AutoMapperConfig.Initialize();
         }
     }
 }
