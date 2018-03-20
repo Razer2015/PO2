@@ -69,6 +69,7 @@ namespace PO2Sovellus
             //app.UseDefaultFiles(); // Käyttää index.html tiedostoa defaulttina
             //app.UseStaticFiles(); // Käyttää wwwroot kansion tiedostoja
             app.UseFileServer(); // Korvaa edelliset
+            app.UseNodeModules(env.ContentRootPath);
 
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
@@ -84,11 +85,11 @@ namespace PO2Sovellus
 
             app.UseMvc(ConfigureRoutes);
 
-            app.Run(context =>
-            {
-                context.Response.ContentType = "text/html; charset=utf-8";
-                return context.Response.WriteAsync("Sivua ei löytynyt.");
-            });
+            //app.Run(context =>
+            //{
+            //    context.Response.ContentType = "text/html; charset=utf-8";
+            //    return context.Response.WriteAsync("Sivua ei löytynyt.");
+            //});
 
             //app.UseWelcomePage(new WelcomePageOptions { Path = "/welcome" });
 

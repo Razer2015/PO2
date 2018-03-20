@@ -1,13 +1,13 @@
 ﻿@model Ravintola
 
-<section>
-    <h3>@Model.Nimi</h3>
-    <div>
+<section class="panel panel-default">
+    <h3 class="panel-heading">@Model.Nimi</h3>
+    <div class="panel-body">
         @Model.Kaupunki.Nimi <br />
         @Model.Katuosoite <br />
     </div>
-    <div>
-        <a asp-action="Tiedot" asp-route-id="@Model.Id">Näytä</a>
-        <a asp-action="Muuta" asp-route-id="@Model.Id">Muokkaa</a>
+    <div class="panel-footer">
+        <a class="btn btn-primary" asp-action="Tiedot" asp-route-id="@Model.Id">Näytä</a>
+        <a class="btn btn-primary" asp-action="Muuta" asp-route-id="@Model.Id">Muokkaa</a>
     </div>
 </section>
