@@ -12,6 +12,9 @@ using Sovellus.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System;
+using AutoMapper;
+using PO2Sovellus.ViewModels;
+using Sovellus.Model.Entities;
 
 namespace PO2Sovellus
 {
@@ -62,6 +65,12 @@ namespace PO2Sovellus
                 .AddEntityFrameworkStores<SovellusIdentityDbContext>();
 
             services.AddDbContext<SovellusIdentityDbContext>(options => options.UseSqlServer(yhteys));
+
+            // AutoMapper-kirjaston käytön alustus
+            Mapper.Initialize(config =>
+            {
+                config.CreateMap<RavintolaApiViewModel, Ravintola>().ReverseMap();
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -114,8 +123,6 @@ namespace PO2Sovellus
             Configuration = builder.Build();
 
             _contentRootPath = env.ContentRootPath;
-
-            App_Start.AutoMapperConfig.Initialize();
         }
     }
 }

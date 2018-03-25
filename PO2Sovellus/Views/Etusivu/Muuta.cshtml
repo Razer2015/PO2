@@ -1,7 +1,7 @@
 ﻿@model PO2Sovellus.ViewModels.RavintolaEditViewModel
 
 @{
-        ViewBag.Title = $"Muuta {Model.Nimi}";
+    ViewBag.Title = $"Muuta {Model.Nimi}";
 }
 
 <div>
@@ -21,7 +21,7 @@
                 <select class="form-control" asp-for="TyyppiId" asp-items="@(new SelectList(Model.RavintolaTyypit, "Id", "Nimi"))"></select>
                 <br />
                 <label asp-for="Katuosoite"></label>
-                <input class="form-control"  asp-for="Katuosoite" />
+                <input class="form-control" asp-for="Katuosoite" />
                 <span asp-validation-for="Katuosoite"></span>
                 <br />
                 <label asp-for="Postinro"></label>
@@ -29,7 +29,7 @@
                 <span asp-validation-for="Postinro"></span>
                 <br />
                 <label asp-for="KuvaUrl"></label>
-                <input class="form-control"  asp-for="KuvaUrl" />
+                <input class="form-control" asp-for="KuvaUrl" />
                 <span asp-validation-for="KuvaUrl"></span>
                 <br />
                 <label asp-for="KotisivuUrl"></label>

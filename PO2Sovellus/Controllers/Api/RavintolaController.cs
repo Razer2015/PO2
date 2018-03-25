@@ -39,13 +39,6 @@ namespace PO2Sovellus.Controllers.Api
         public IActionResult Post([FromBody]RavintolaApiViewModel malli) {
             try {
                 if (ModelState.IsValid) {
-                    // Siirretty App_Start -> AutoMapperConfig, jota kutsutaan kerran Startup luokasta, koska
-                    // Mapper.Initialize kutsu kaksi kertaa peräkkäin tuottaa virheen. Virhe johtuu vissiin Mapperin uudesta versiosta.
-
-                    //Mapper.Initialize(config =>
-                    //{
-                    //    config.CreateMap<RavintolaApiViewModel, Ravintola>();
-                    //});
                     Ravintola uusi = Mapper.Map<Ravintola>(malli);
 
                     uusi = _ravintolaData.Lisaa(uusi);
@@ -54,7 +47,6 @@ namespace PO2Sovellus.Controllers.Api
                     }
                 }
                 return BadRequest(ModelState);
-                //return BadRequest("Ravintolaa ei voitu lisätä.");
             }
             catch (Exception e) {
                 _logger.LogError($"Ravintolan lisääminen epäonnistui: {e.Message}");
@@ -66,13 +58,6 @@ namespace PO2Sovellus.Controllers.Api
         public IActionResult Put([FromBody]RavintolaApiViewModel malli) {
             try {
                 if (ModelState.IsValid) {
-                    // Siirretty App_Start -> AutoMapperConfig, jota kutsutaan kerran Startup luokasta, koska
-                    // Mapper.Initialize kutsu kaksi kertaa peräkkäin tuottaa virheen. Virhe johtuu vissiin Mapperin uudesta versiosta.
-
-                    //Mapper.Initialize(config =>
-                    //{
-                    //    config.CreateMap<RavintolaApiViewModel, Ravintola>();
-                    //});
                     Ravintola muutettava = Mapper.Map<Ravintola>(malli);
                     muutettava = _ravintolaData.Muuta(muutettava);
                     if (muutettava != null) {
@@ -80,7 +65,6 @@ namespace PO2Sovellus.Controllers.Api
                     }
                 }
                 return BadRequest(ModelState);
-                //return BadRequest("Ravintolaa ei voitu muuttaa.");
             }
             catch (Exception e) {
                 _logger.LogError($"Ravintolan muuttaminen epäonnistui: {e.Message}");
