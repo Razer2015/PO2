@@ -87,5 +87,25 @@ namespace Sovellus.Data.Repositories
             _context.SaveChanges();
             return true;
         }
+
+        public List<string> HaeKaupunkiNimet() {
+            return _context.Kaupungit.OrderBy(r => r.Nimi)
+            .Select(r => r.Nimi)
+            .ToList();
+        }
+        public List<string> HaeRavintolaKaupungit() {
+            return _context.Kaupungit.Where(k => k.Ravintolat.Count > 0)
+            .Select(k => k.Nimi)
+            .ToList();
+        }
+        public List<Ravintola> HaeKaupunginRavintolat(string kaupunki) {
+            return _context.Ravintolat
+            .Where(r => r.Kaupunki.Nimi == kaupunki)
+            .ToList();
+        }
+        public List<Ravintola> Hae(string nimi) {
+            return _context.Ravintolat.Where(r => r.Nimi.StartsWith(nimi))
+            .ToList();
+        }
     }
 }

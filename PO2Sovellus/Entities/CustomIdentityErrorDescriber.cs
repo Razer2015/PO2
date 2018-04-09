@@ -121,7 +121,7 @@ nameof(PasswordTooShort),
             return new IdentityError {
                 Code =
 nameof(PasswordRequiresNonAlphanumeric),
-                Description = "Salasanojen pitää sisältää vähintään yhden ei‐alfanumeerisen merkin."
+                Description = "Salasanojen pitää sisältää vähintään yhden ei-alfanumeerisen merkin."
             };
         }
 
@@ -129,14 +129,14 @@ nameof(PasswordRequiresNonAlphanumeric),
             return new IdentityError {
                 Code =
 nameof(PasswordRequiresDigit),
-                Description = "Salasanojen pitää sisältää vähintään yhden numeron ('0'‐'9')."
+                Description = "Salasanojen pitää sisältää vähintään yhden numeron ('0'-'9')."
             };
         }
         public override IdentityError PasswordRequiresLower() {
             return new IdentityError {
                 Code =
 nameof(PasswordRequiresLower),
-                Description = "Salasanojen pitää sisältää vähintään yhden pienaakkosen ('a'‐'z')."
+                Description = "Salasanojen pitää sisältää vähintään yhden pienaakkosen ('a'-'z')."
             };
         }
 
@@ -144,7 +144,7 @@ nameof(PasswordRequiresLower),
             return new IdentityError {
                 Code =
 nameof(PasswordRequiresUpper),
-                Description = "Salasanojen pitää sisältää vähintään yhden suuraakkosen ('A'‐'Z')."
+                Description = "Salasanojen pitää sisältää vähintään yhden suuraakkosen ('A'-'Z')."
             };
         }
     }

@@ -40,6 +40,7 @@ namespace PO2Sovellus
             services.AddSingleton<ITervehtija, Tervehtija>();
             //services.AddScoped<IData<Ravintola>, InMemoryRavintolaData>();
             services.AddScoped<IRavintolaRepository, RavintolaRepository>();
+            services.AddScoped<IArviointiRepository, ArviointiRepository>();
 
             services.AddLogging();
 

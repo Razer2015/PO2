@@ -19,6 +19,14 @@ namespace Sovellus.Data.Repositories
             return _context.Arvioinnit.ToList();
         }
 
+        public List<Arviointi> HaeRavintolanUusimmat(int id, int lkm = 5) {
+            return _context.Arvioinnit
+                        .Where(a => a.RavintolaId == id)
+                        .OrderByDescending(a => a.Aika)
+                        .Take(lkm)
+                        .ToList();
+        }
+
         public Arviointi Lisaa(Arviointi uusi) {
             var id = _context.Arvioinnit.Count() > 0 ? _context.Arvioinnit.Max(r => r.Id) + 1 : 1;
             uusi.Id = id;

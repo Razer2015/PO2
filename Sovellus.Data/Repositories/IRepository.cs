@@ -19,7 +19,11 @@ namespace Sovellus.Data.Repositories
         List<RavintolaTyyppi> HaeRavintolaTyypit();
         Ravintola Hae(int id, bool navigation);
         ICollection<Ravintola> HaeKaikki(bool navigation);
+        List<string> HaeRavintolaKaupungit();
+        List<Ravintola> HaeKaupunginRavintolat(string kaupunki);
     }
-    public interface IArviointiRepository : IRepository<Arviointi, long> { }
+    public interface IArviointiRepository : IRepository<Arviointi, long> {
+        List<Arviointi> HaeRavintolanUusimmat(int id, int lkm);
+    }
     public interface IUutinenRepository : IRepository<Uutinen, long> { }
 }
