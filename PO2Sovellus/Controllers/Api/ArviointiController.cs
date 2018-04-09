@@ -39,10 +39,10 @@ namespace PO2Sovellus.Controllers.Api
             try {
                 if (ModelState.IsValid) {
                     malli.Aika = DateTime.Now;
-                    Mapper.Initialize(config =>
-                    {
-                        config.CreateMap<ArviointiApiViewModel, Arviointi>().ReverseMap();
-                    });
+                    //Mapper.Initialize(config =>
+                    //{
+                    //    config.CreateMap<ArviointiApiViewModel, Arviointi>().ReverseMap();
+                    //});
                     Arviointi uusi = Mapper.Map<Arviointi>(malli);
                     uusi = _arviointiData.Lisaa(uusi);
                     if (uusi != null) {

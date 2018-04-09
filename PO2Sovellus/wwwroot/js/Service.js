@@ -12,6 +12,9 @@ angular.module("maistuuko").service('arviointiService', ['$http', function ($htt
         return $http.get("/api/arvioinnit/" + id);
     };
     this.haeRavintola = function (id) {
+        $http.get("/api/ravintola/" + id).then(function (response) {
+            console.log(response.data);
+        });
         return $http.get("/api/ravintola/" + id);
     };
     this.lisaaArviointi = function (lisattava) {

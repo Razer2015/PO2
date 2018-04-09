@@ -28,8 +28,8 @@ namespace Sovellus.Data.Repositories
         }
 
         public Arviointi Lisaa(Arviointi uusi) {
-            var id = _context.Arvioinnit.Count() > 0 ? _context.Arvioinnit.Max(r => r.Id) + 1 : 1;
-            uusi.Id = id;
+            //var id = _context.Arvioinnit.Count() > 0 ? _context.Arvioinnit.Max(r => r.Id) + 1 : 1;
+            //uusi.Id = id;
             _context.Arvioinnit.Add(uusi);
             _context.SaveChanges();
             return uusi;
